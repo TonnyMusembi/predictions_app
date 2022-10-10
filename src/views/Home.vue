@@ -6,7 +6,7 @@ export default {
     return {
       test: "",
       data: [],
-      games:[]
+      games: [],
     };
   },
 
@@ -26,11 +26,16 @@ export default {
       };
       const url =
         "https://football-prediction-api.p.rapidapi.com/api/v2/predictions";
-      await axios.get(url, payload).then((response) => {
-        console.log(this.test);
-        console.log(response.data.data);
-        this.games = response.data.data;
-      });
+      await axios
+        .get(url, payload)
+        .then((response) => {
+          console.log(this.test);
+          console.log(response.data.data);
+          this.games = response.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   mounted() {
@@ -40,7 +45,7 @@ export default {
 </script>
 
 <template>
-    <div class="mt-2">
+  <div class="col-md-3">
     <button
       v-if="canRefresh"
       @click="getServers"
@@ -142,8 +147,11 @@ export default {
       </tbody>
     </table>
   </div>
-  <div>
+  <div >
     <button v-on:click="getGames">test</button>
   </div>
+  <b-container>
+    
+  </b-container>
   <!-- <h1>Home Page</h1> -->
 </template>
