@@ -40,8 +40,6 @@ export default {
     },
     async betGames() {
       const options = {
-        // method: 'GET',
-        // url: 'https://weatherapi-com.p.rapidapi.com/sports.json',
         params: { q: "London" },
         headers: {
           "X-RapidAPI-Key":
