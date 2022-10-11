@@ -37,6 +37,16 @@ export default {
           console.log(error);
         });
     },
+    async betGames() {
+      await axios
+        .get()
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     this.getGames();
@@ -147,11 +157,13 @@ export default {
       </tbody>
     </table>
   </div>
-  <div >
+  <div>
     <button v-on:click="getGames">test</button>
   </div>
-  <b-container>
-    
-  </b-container>
+  <br />
+  <div>
+    <button v-on:click="betGames">Show</button>
+  </div>
+  <b-container> </b-container>
   <!-- <h1>Home Page</h1> -->
 </template>
