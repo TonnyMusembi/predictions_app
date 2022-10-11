@@ -39,10 +39,22 @@ export default {
         });
     },
     async betGames() {
+      const options = {
+        // method: 'GET',
+        // url: 'https://weatherapi-com.p.rapidapi.com/sports.json',
+        params: { q: "London" },
+        headers: {
+          "X-RapidAPI-Key":
+            "68a17b08dbmshe68484fe4f7905bp16ece9jsn2069f40c2728",
+          "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+        },
+      };
+      const url = "https://weatherapi-com.p.rapidapi.com/sports.json";
       await axios
-        .get(options, api)
+        .get(url, options)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
+          this.bets = response.data.data;
         })
         .catch((error) => {
           console.log(error);
@@ -50,6 +62,7 @@ export default {
     },
   },
   mounted() {
+    this.betGames();
     this.getGames();
   },
 };
