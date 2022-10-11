@@ -1,12 +1,13 @@
 <script>
 import axios from "axios";
-
 export default {
+  setup() {},
   data() {
     return {
       test: "",
       data: [],
       games: [],
+      bets: [],
     };
   },
 
@@ -39,7 +40,7 @@ export default {
     },
     async betGames() {
       await axios
-        .get()
+        .get(options, api)
         .then((response) => {
           console.log(response);
         })
