@@ -8,6 +8,7 @@ export default {
       data: [],
       games: [],
       bets: [],
+      weather: [],
     };
   },
   methods: {
@@ -48,18 +49,43 @@ export default {
         },
       };
       const url = "https://weatherapi-com.p.rapidapi.com/sports.json";
-      await axios.get(url, options).then((response) => {
+      await axios
+        .get(url, options)
+        .then((response) => {
+          console.log(response.data);
+          this.bets = response.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // if (response === 200) {
+      //   return true;
+      // } else {
+      //   return error;
+      // }
+    },
+
+    async weatherUpdates() {
+      const options = {
+        // method: 'GET',
+        // url: 'https://weatherapi-com.p.rapidapi.com/history.json',
+        params: { q: "Kenya", dt: "2022-10-11", lang: "en" },
+        headers: {
+          "X-RapidAPI-Key":
+            "68a17b08dbmshe68484fe4f7905bp16ece9jsn2069f40c2728",
+          "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+        },
+      };
+      const api = "https://weatherapi-com.p.rapidapi.com/history.json";
+      await axios.get(api, options).then((response) => {
         console.log(response.data);
-        this.bets = response.data.data;
+        this.weather = response.data;
       });
-      if (response === 200) {
-        return true;
-      } else {
-        return error;
-      }
     },
   },
   mounted() {
+    this.weatherUpdates();
     this.betGames();
     this.getGames();
   },
