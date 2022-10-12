@@ -15,8 +15,8 @@ export default {
       const payload = {
         params: {
           market: "classic",
-          // iso_date: "2022-08-01",
-          'Date': (new Date()).toUTCString(),
+          iso_date: "2022-08-01",
+          // 'Date': (new Date()).toUTCString(),
           federation: "UEFA",
         },
         headers: {
