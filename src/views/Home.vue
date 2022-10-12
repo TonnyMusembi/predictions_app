@@ -15,8 +15,8 @@ export default {
       const payload = {
         params: {
           market: "classic",
-          iso_date: "2022-08-01",
-          // 'Date': (new Date()).toUTCString(),
+          // iso_date: "2022-08-01",
+          Date: new Date().toUTCString(),
           federation: "UEFA",
         },
         headers: {
@@ -48,15 +48,15 @@ export default {
         },
       };
       const url = "https://weatherapi-com.p.rapidapi.com/sports.json";
-      await axios
-        .get(url, options)
-        .then((response) => {
-          console.log(response.data);
-          this.bets = response.data.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      await axios.get(url, options).then((response) => {
+        console.log(response.data);
+        this.bets = response.data.data;
+      });
+      if (response === 200) {
+        return true;
+      } else {
+        return error;
+      }
     },
   },
   mounted() {
